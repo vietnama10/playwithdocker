@@ -58,6 +58,7 @@
 	1. Simple using docker for containerizing an application
 		1. Containerizing a simple html page
 		2. Deploy to server using Docker Hub
+		(https://github.com/usha-mandya/SimpleWhaleDemo)
 	2. Development multiple apps use Docker Compose
 		1. Setup container Mysql
 		2. Setup simple nodejs app connect to Mysql container
