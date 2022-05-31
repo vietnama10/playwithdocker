@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+
+    app:
+        image: node:12-alpine
+        command: sh -c "npm install && node server"
+    ports:
+        - 80:3000
+    working_dir: /app
+    volumes:
+        - ./:/app
+    environment:
+        MYSQL_HOST: mysql-server
+        MYSQL_USER: root
+        MYSQL_PASSWORD: 12345
+        MYSQL_DB: playwithdocker
+
+    mysql:
+        image: mysql:latest
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: playwithdocker
+
+volumns:
+    mysql-data:
+
+networks:
+    playwithdocker:
+        # Use a custom driver
+        driver: custom-driver-1
