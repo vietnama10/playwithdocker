@@ -8,7 +8,9 @@
 4.  [How to using Docker in basically?](#how-to-using-docker-in-basically)
 5.  [What next?](#what-next)
 
-### What is Docker
+### What is Docker?
+![image](https://user-images.githubusercontent.com/15383075/171147109-8bff0707-be72-45ae-9c54-aaedf5578f2a.png)
+
 -	Docker is an open platform for developing, shipping, and running apps.
 -	Docker is the de facto standard to build and share containerized apps – from desktop, to the cloud (local -> dev, prod).
 -	With Docker, you can manage your infrastructure in the same ways you manage your applications.
