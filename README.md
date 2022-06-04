@@ -3,57 +3,64 @@
 ### Table of contents
 
 1.  [What is Docker?](#what-is-docker)
-2.  [Architechture and basic concepts](#architechture-and-basic-concepts)
+2.  [Architechture](#architechture)
 3.  [Why is using Docker?](#why-is-using-docker)
-4.  [How to using Docker in basically?](#how-to-using-docker-in-basically)
-5.  [What next?](#what-next)
+4.  [Basic concepts and command lines](#basic-concepts-and-command-lines)
+5.  [How to using Docker in basically?](#how-to-using-docker-in-basically)
+6.  [What next?](#what-next)
 
 ### What is Docker?
 ![image](https://user-images.githubusercontent.com/15383075/171147109-8bff0707-be72-45ae-9c54-aaedf5578f2a.png)
 
--	Docker is an open platform for developing, shipping, and running apps.
--	Docker is the de facto standard to build and share containerized apps – from desktop, to the cloud (local -> dev, prod).
+-	Docker is an open platform for developing, shipping, and running apps – from desktop, to the cloud (local -> dev, production).
+-	Docker based on "Container Technology" -> you can solve the “it works on my machine” headache.
 -	With Docker, you can manage your infrastructure in the same ways you manage your applications.
--	With Docker, you can solve the “it works on my machine” headache.
-### Architechture and basic concepts:
+### Architechture:
 	
 - 	Architechture:
 	![image](https://user-images.githubusercontent.com/15383075/170934097-435dd734-491c-4666-8703-42f8654e79d9.png)
+
+### Why is using Docker?
+-	**Keep it Simple**
+	- Docker’s friendly, CLI-based workflow makes building, sharing, and running containerized applications accessible to developers of all skill levels.
 	
+-	**Fast, lightweight and consistent delivery of your applications**
+	- Install from a single package to get up and running in minutes. Code and test locally while ensuring consistency between development and production. So saving your setup and config time between defferent environments.
+	
+	![image](https://user-images.githubusercontent.com/15383075/170947710-b9f8514d-cc60-4c17-a6e0-5717272521ab.png)
+	
+	- Running more workloads on the same hardware. So optimize resouces.
+	- Containers can be easy to create in needed or remove in no needed right at the moment. So suitable for systems with many modules or microservices.
+	
+	![image](https://user-images.githubusercontent.com/15383075/170949147-a5e9fe7b-c936-455c-99b0-ad22b3147161.png)
+
+-	**Collaborate**
+	- Use Certified and community-provided images in your project. Push to a cloud-based application registry and collaborate with team members.
+
+### Basic concepts and command lines:
 -	Basic concepts:
 	- Dockerfile
 	- Docker Image
-	- Docker Image layer
+	- Docker Image Layers
 	- Docker Container
 	- Docker Deamon
-	- Docker Engine
 	- Docker Client
-	- Docker Compose
 	- Docker Registry(Hub)
+	- ...
 
 -	Basic commands:
-	- docker images
-	- docker rmi <image_id>
-	- docker ps
-	- docker rm <container_id>
+	- docker image
+	- docker rmi
+	- docker container
+	- docker rm
 	- docker build
 	- docker run 
-	- docker pull
-	- docker push
-
-### Why is using Docker?
--	Keep it Simple
-	- Docker’s friendly, CLI-based workflow makes building, sharing, and running containerized applications accessible to developers of all skill levels.
--	Fast, lightweight and consistent delivery of your applications
-	- Install from a single package to get up and running in minutes. Code and test locally while ensuring consistency between development and production.
-	- Running more workloads on the same hardware
-
-	![image](https://user-images.githubusercontent.com/15383075/170949147-a5e9fe7b-c936-455c-99b0-ad22b3147161.png)
+	- docker logs
+	- docker volumn
+	- docker network
+	- ...
 	
-	![image](https://user-images.githubusercontent.com/15383075/170947710-b9f8514d-cc60-4c17-a6e0-5717272521ab.png)
-
--	Collaborate
-	- Use Certified and community-provided images in your project. Push to a cloud-based application registry and collaborate with team members.
+![image](https://user-images.githubusercontent.com/15383075/171990747-afd5760f-496c-4220-8d50-50ece91d1862.png)
 
 ### How to using Docker in basically?
 -	### Following some demo below to see, how it's works and how to uses. Let's get started!
@@ -76,4 +83,4 @@
 			1. Explain file: https://github.com/vietnama10/playwithdocker/blob/master/docker-compose.yml
 		
 ### What next?
--	CI/CD with Jenkins or Github Actions
+-	CI/CD Pipeline with Jenkins or Github Actions.
