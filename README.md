@@ -39,13 +39,16 @@
 
 ### Basic concepts and command lines:
 -	Basic concepts:
+	- Docker Deamon
+	- Docker Client
+	- Docker Registry(Hub)
 	- Dockerfile
 	- Docker Image
 	- Docker Image Layers
 	- Docker Container
-	- Docker Deamon
-	- Docker Client
-	- Docker Registry(Hub)
+	- Docker Compose
+	- Docker Volumn
+	- Docker Network
 	- ...
 
 -	Basic commands:
@@ -60,7 +63,19 @@
 	- docker network
 	- ...
 	
+-	Image layers and Container layers
+
 ![image](https://user-images.githubusercontent.com/15383075/172034762-07bb4385-115c-45f0-a7f2-2e5e675f8e56.png)
+
+-	Docker networking
+	-	Bridge network
+	
+	![image](https://user-images.githubusercontent.com/15383075/172403798-c4245ed0-8137-47c0-900c-54311d881d3d.png)
+
+	- 	Host network
+	
+	![image](https://user-images.githubusercontent.com/15383075/172404700-c405156e-09ea-41c6-9c64-80d607e8aebb.png)
+
 
 ### How to using Docker in basically?
 -	### Following some demo below to see, how it's works and how to uses. Let's get started!
