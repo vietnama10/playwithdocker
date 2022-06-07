@@ -69,17 +69,17 @@
 		2. Deploy to server using Docker Hub
 		(follow this repo https://github.com/vietnama10/SimpleDockerDemo)
 	2. Development multiple apps use Docker Compose
-		1. Setup container Mysql
-			1. Create network: `docker network create playwithdocker`
-			2. Pull offical image from docker hub: `docker pull mysql`
-			3. Run mysql: `docker run --name mysql-server -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=playwithdocker --network playwithdocker mysql`
-			4. Access to mysql-server for create table: `docker exec -it mysql-server mysql -u root -p 12345`
-			5. Create table `CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))`
+		1. Create network: `docker network create playwithdocker`
+		2. Setup container Mysql
+			1. Pull offical image from docker hub: `docker pull mysql`
+			2. Run mysql: `docker run --name mysql-server -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=playwithdocker --network playwithdocker mysql`
+			3. Access to mysql-server for create table: `docker exec -it mysql-server mysql -u root -p 12345`
+			4. Create table `CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))`
 		3. Setup simple nodejs app connect to Mysql container
 			1. Build own image from Dockerfile: `docker build -t node-app:v1.0 .` (explain Dockerfile)
 			2. Run own app: `docker run -p 80:3000 --name customer-service --network playwithdocker node-app:v1.0`
 			3. See result
-		5. Setup docker-compose.yml to start multiple containers
+		4. Setup docker-compose.yml to start multiple containers
 			1. Explain file: https://github.com/vietnama10/playwithdocker/blob/master/docker-compose.yml
 		
 ### What next?
