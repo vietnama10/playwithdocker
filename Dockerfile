@@ -20,4 +20,4 @@ RUN npm install --${NODE_ENV}
 
 COPY . .
 
-CMD [ "node", "server.js" 
+CMD [ "node", "server.js" ]
