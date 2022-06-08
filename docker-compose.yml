@@ -29,5 +29,4 @@ volumns:
 
 networks:
     playwithdocker:
-        # Use a custom driver
-        driver: custom-driver-1
+        driver: brigde
