@@ -94,7 +94,7 @@
 			3. Access to mysql-server for create table: `docker exec -it mysql-server mysql -u root -p` -> password 12345
 		3. Setup simple nodejs app connect to Mysql container
 			1. Build own image from Dockerfile: `docker build -t node-app:v1.0 .` (explain Dockerfile)
-			2. Run own app: `docker run --rm  -dit -p 8080:3000 --name customer-service --network playwithdocker node-app:v1.0` <br> Or run with bind mount `docker run --rm  -dit -p 8080:3000 --name customer-service -v "$(pwd)":/app --network playwithdocker node-app:v1.0`
+			2. Run own app: `docker run --rm  -dit -p 8080:3000 --name customer-service --network playwithdocker node-app:v1.0` <br> Or run with bind mount `docker run --rm  -dit -p 8080:3000 --name customer-service -v "$(pwd)":/app -v /app/node_modules --network playwithdocker node-app:v1.0`
 			3. See result
 		4. Setup docker-compose.yml to start multiple containers
 			1. Explain file: https://github.com/vietnama10/playwithdocker/blob/master/docker-compose.yml
