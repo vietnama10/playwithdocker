@@ -10,14 +10,15 @@ ENV MYSQL_PASSWORD=12345
 
 ENV MYSQL_DB=playwithdocker
 
-ENV NODE_ENV=production
+RUN npm install -g nodemon
 
 WORKDIR /app
 
 COPY ["package.json", "package-lock.json*", "./"]
 
-RUN npm install --${NODE_ENV}
+RUN npm install
 
 COPY . .
 
-CMD [ "node", "server.js" ]
+# use npm scripts
+CMD [ "npm", "run", "dev" ]
