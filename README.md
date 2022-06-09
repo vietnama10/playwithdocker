@@ -1,11 +1,12 @@
 # Play with Docker
-
+A project to research about docker by me.
+Using resource from https://docs.docker.com/ and some image about Internet.
 ### Table of contents
 
 1.  [What is Docker?](#what-is-docker)
 2.  [Architechture](#architechture)
 3.  [Why is using Docker?](#why-is-using-docker)
-4.  [Basic concepts and command lines](#basic-concepts-and-command-lines)
+4.  [Basic concepts, command lines and common objects](#basic-concepts-command-lines-and-common-objects)
 5.  [How to using Docker in basically?](#how-to-using-docker-in-basically)
 6.  [What next?](#what-next)
 
@@ -15,10 +16,13 @@
 -	Docker is an open platform for developing, shipping, and running apps – from desktop, to the cloud (local -> dev, production).
 -	Docker based on "Container Technology" -> you can solve the “it works on my machine” headache.
 -	With Docker, you can manage your infrastructure in the same ways you manage your applications.
-### Architechture:
+
+
+### Architechture
 	
 - 	Architechture:
 	![image](https://user-images.githubusercontent.com/15383075/170934097-435dd734-491c-4666-8703-42f8654e79d9.png)
+
 
 ### Why is using Docker?
 -	**Keep it Simple**
@@ -32,19 +36,20 @@
 	- Running more workloads on the same hardware. So optimize resouces.
 	- Containers can be easy to create in needed or remove in no needed right at the moment. So suitable for systems with many modules or microservices.
 	
-	![image](https://user-images.githubusercontent.com/15383075/170949147-a5e9fe7b-c936-455c-99b0-ad22b3147161.png)
+	![image](https://user-images.githubusercontent.com/15383075/172748823-ab2fb79f-f133-4b02-ad60-50f6c7a424f4.png)
+	<p align="center"><b>Traditional Deployment VS Virtualization VS Container</b></p>
 
 -	**Collaborate**
 	- Use Certified and community-provided images in your project. Push to a cloud-based application registry and collaborate with team members.
 
-### Basic concepts and command lines:
+
+### Basic concepts, command lines and common objects
 -	Basic concepts:
 	- Docker Deamon
 	- Docker Client
 	- Docker Registry(Hub)
 	- Dockerfile
-	- Docker Image
-	- Docker Image Layers
+	- Docker Layers
 	- Docker Container
 	- Docker Compose
 	- Docker Volumn
@@ -62,10 +67,10 @@
 	- docker volumn
 	- docker network
 	- ...
-	
--	Image layers and Container layers
 
-![image](https://user-images.githubusercontent.com/15383075/172034762-07bb4385-115c-45f0-a7f2-2e5e675f8e56.png)
+-	Docker layers
+
+![image](https://user-images.githubusercontent.com/15383075/172755517-5d5428b1-82f6-433e-9f87-611995f9f597.png)
 
 -	Docker networking
 	- Docker networking is primarily used to establish communication between Docker containers and the outside world via the host machine where the Docker daemon is running.
@@ -79,6 +84,7 @@
 	- Docker has two options for containers to store files on the host machine, so that the files are persisted even after the container stops: *volumes*, and *bind mounts*. <br>
 	![image](https://user-images.githubusercontent.com/15383075/172640756-a9dd4401-dfb4-468a-a8c8-a05a36bfdd07.png)
 	- Docker provide the *-v or --volume or --mount* flag to setting volumns or bind mounts
+
 
 ### How to using Docker in basically?
 -	### Following some demo below to see, how it's works and how to uses. Let's get started!
@@ -97,7 +103,10 @@
 			2. Run own app: `docker run --rm  -dit -p 8080:3000 --name customer-service --network playwithdocker node-app:v1.0` <br> Or run with bind mount `docker run --rm  -dit -p 8080:3000 --name customer-service -v "$(pwd)":/app -v /app/node_modules --network playwithdocker node-app:v1.0`
 			3. See result
 		4. Setup docker-compose.yml to start multiple containers
-			1. Explain file: https://github.com/vietnama10/playwithdocker/blob/master/docker-compose.yml
-		
+			1. Explain file: https://github.com/vietnama10/playwithdocker/blob/feature-add_nodemon/docker-compose.yml
+			2. `docker-compose up -d` `docker-compose ps -a` `docker-compose down --rmi local`
+	
+	
+
 ### What next?
 -	CI/CD Pipeline with Jenkins or Github Actions.
