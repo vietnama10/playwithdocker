@@ -27,7 +27,7 @@ con.connect(function (err) {
 		if (err) throw err;
 		console.log("Table created");
 	});
-	const sql2 = "INSERT INTO customers (name, address) VALUES ('Bao Bong Bot', 'Cam Le, Da Nang')";
+	const sql2 = "INSERT INTO customers (name, address) VALUES ('Dunzg Lukak', 'Thanh Khe, Da Nang')";
 	con.query(sql2, function (err, result) {
 		if (err) throw err;
 		console.log("1 record inserted");
