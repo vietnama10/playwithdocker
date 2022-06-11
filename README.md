@@ -92,7 +92,7 @@ Using resource from https://docs.docker.com/ and some image about Internet.
 		1. Containerizing a simple html page
 		2. Deploy to server using Docker Hub
 		(follow this repo https://github.com/vietnama10/SimpleDockerDemo)
-	2. Development apps use Docker Volumn/Docker Network/Docker Compose
+	2. Development apps use Docker Volumes/Docker Network/Docker Compose
 		1. Create network: `docker network create playwithdocker`
 		2. Setup container Mysql
 			1. Pull offical image from docker hub: `docker pull mysql`
@@ -104,7 +104,11 @@ Using resource from https://docs.docker.com/ and some image about Internet.
 			3. See result
 		4. Setup docker-compose.yml to start multiple containers
 			1. Explain file: https://github.com/vietnama10/playwithdocker/blob/feature-add_nodemon_compose/docker-compose.yml
-			2. `docker-compose up -d` `docker-compose ps -a` `docker-compose down --rmi local`
+			2. `docker-compose up -d` 
+			3. Access to mysql-service to create sample data for testing app at: http://localhost:8080/customers
+			`CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255));` <br>
+			`INSERT INTO customers (name, address) VALUES ('Dunzg Lukak', 'Thanh Khe, Da Nang');`
+			4. `docker-compose ps -a` `docker-compose down --rmi local`
 	
 	
 
