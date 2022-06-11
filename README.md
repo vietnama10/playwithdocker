@@ -100,18 +100,18 @@ Using resource from https://docs.docker.com/ and some image about Internet.
 		2. Setup container Mysql
 			1. Pull offical image from docker hub: `docker pull mysql`
 			2. Run mysql: `docker run --rm -dit --name mysql-server -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=playwithdocker --network playwithdocker mysql` <br> Or run with volume `docker run --rm -dit --name mysql-server -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=playwithdocker --network playwithdocker mysql`
-			3. Access to mysql-server for create table: `docker exec -it mysql-server mysql -u root -p` -> password 12345
+			3. Access to mysql-server for create table: `docker exec -it mysql-server mysql -u root -p` -> password 12345 <br>
+			`CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255));` <br>
+			`INSERT INTO customers (name, address) VALUES ('Dunzg Lukak', 'Thanh Khe, Da Nang');`
 		3. Setup simple nodejs app connect to Mysql container
 			1. Build own image from Dockerfile: `docker build -t node-app:v1.0 .` (explain Dockerfile)
 			2. Run own app: `docker run --rm  -dit -p 8080:3000 --name customer-service --network playwithdocker node-app:v1.0` <br> Or run with bind mount `docker run --rm  -dit -p 8080:3000 --name customer-service -v "$(pwd)":/app -v /app/node_modules --network playwithdocker node-app:v1.0`
 			3. See result
 		4. Setup docker-compose.yml to start multiple containers
 			1. Explain file: https://github.com/vietnama10/playwithdocker/blob/feature-add_nodemon_compose/docker-compose.yml
-			2. `docker-compose up -d` 
-			3. Access to mysql-service to create sample data for testing app at: http://localhost:8080/customers
-			`CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255));` <br>
-			`INSERT INTO customers (name, address) VALUES ('Dunzg Lukak', 'Thanh Khe, Da Nang');`
-			4. `docker-compose ps -a` `docker-compose down --rmi local`
+			2. Run `docker-compose up -d` to start up project
+			3. Application at: : List -> http://localhost:8080/customers  || Create -> http://localhost:8080/customers
+			4. Others command `docker-compose ps -a` , `docker-compose down --rmi local`
 	
 	
 

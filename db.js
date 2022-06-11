@@ -7,41 +7,28 @@ const {
 	MYSQL_DB: DB
 } = process.env;
 
-const con = mysql.createConnection({
-	host: HOST,
-	user: USER,
-	password: PASSWORD,
-	database: DB
-});
-
-con.connect(function (err) {
-	if (err) throw err;
-	console.log("Connected!");
-	const sql0 = "DROP TABLE IF EXISTS customers";
-	con.query(sql0, function (err, result) {
-		if (err) throw err;
-		console.log("Table droped");
+var pool;
+const getPool = () => {
+	if (pool) return pool;
+	pool = mysql.createPool({
+		host: HOST,
+		user: USER,
+		password: PASSWORD,
+		database: DB
 	});
-	const sql1 = "CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))";
-	con.query(sql1, function (err, result) {
-		if (err) throw err;
-		console.log("Table created");
-	});
-	const sql2 = "INSERT INTO customers (name, address) VALUES ('Dunzg Lukak', 'Thanh Khe, Da Nang')";
-	con.query(sql2, function (err, result) {
-		if (err) throw err;
-		console.log("1 record inserted");
-	});
-});
+	return pool;
+};
 
 const query = (sql) => {
+	const pool = getPool();
 	return new Promise((resolve, reject) => {
-		con.query(
-			sql,
-			(err, result) => {
+		pool.getConnection(function (err, connection) {
+			if (err) throw err;
+			connection.query(sql, (err, result) => {
+				connection.release();
 				return err ? reject(err) : resolve(result);
-			}
-		);
+			});
+		});
 	});
 }
 
