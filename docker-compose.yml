@@ -1,0 +1,45 @@
+version: "3.7"
+services:
+    app:
+        build: .
+        container_name: customer-service
+        ports:
+            - 8080:3000
+        volumes:
+            - ./:/app
+            - /app/node_modules
+        environment:
+            MYSQL_HOST: mysql-service
+            MYSQL_USER: root
+            MYSQL_PASSWORD: 12345
+            MYSQL_DB: playwithdocker
+        networks:
+            - playwithdocker
+        depends_on:
+            - mysql
+        restart: always
+        #command: S
+        #    - /bin/sh
+        #    - -c
+        #    - "sleep 10 && npm run dev"
+
+
+    mysql:
+        image: mysql
+        container_name: mysql-service
+        volumes:
+            - mysql-data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: 12345
+            MYSQL_DATABASE: playwithdocker
+        networks:
+            - playwithdocker
+        restart: always
+
+volumes:
+    mysql-data:
+
+
+networks:
+    playwithdocker:
+        driver: bridge
