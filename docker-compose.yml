@@ -1,0 +1,51 @@
+version: "2.4"
+services:
+    app:
+        build: .
+        mem_limit: 1G
+        mem_reservation: 0.5G
+        cpus: 0.3
+        container_name: customer-service
+        ports:
+            - 8080:3000
+        volumes:
+            - ./:/app
+            - /app/node_modules
+        environment:
+            MYSQL_HOST: mysql-service
+            MYSQL_USER: root
+            MYSQL_PASSWORD: 12345
+            MYSQL_DB: playwithdocker
+        networks:
+            - playwithdocker
+        depends_on:
+            - mysql
+        restart: always
+        #command:
+        #    - /bin/sh
+        #    - -c
+        #    - "sleep 10 && npm run dev"
+
+
+    mysql:
+        image: mysql
+        mem_limit: 2G
+        mem_reservation: 1G
+        cpus: 0.4
+        container_name: mysql-service
+        volumes:
+            - mysql-data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: 12345
+            MYSQL_DATABASE: playwithdocker
+        networks:
+            - playwithdocker
+        restart: always
+
+volumes:
+    mysql-data:
+
+
+networks:
+    playwithdocker:
+        driver: bridge
