@@ -5,13 +5,13 @@ Using resource from https://docs.docker.com/ and some image from Internet.
 ### Table of contents
 
 1.  [What is Docker?](#what-is-docker)
-2.  [Architechture](#architechture)
+2.  [Docker architecture and basic concepts](#docker-architecture-and-basic-concepts)
 3.  [Why is using Docker?](#why-is-using-docker)
-4.  [Basic concepts, command lines and common objects](#basic-concepts-command-lines-and-common-objects)
+4.  [The most common command lines and objects](#the-most-common-command-lines-and-objects)
 5.  [How to using Docker in basically?](#how-to-using-docker-in-basically)
 	1. Basic using concept with dockerizing simple app
 	2. Development with multiple services use Docker Volumes/Docker Network/Docker Compose
-7.  [What next?](#what-next)
+7.  [What futher?](#what-futher)
 
 ### What is Docker?
 ![image](https://user-images.githubusercontent.com/15383075/171147109-8bff0707-be72-45ae-9c54-aaedf5578f2a.png)
@@ -21,11 +21,20 @@ Using resource from https://docs.docker.com/ and some image from Internet.
 - With Docker, you can manage your infrastructure in the same ways you manage your applications.
 - Tech: Docker is written in the Go programming language and takes advantage of several features of the Linux kernel (resource isolation) to deliver its functionality.
 
-### Architechture
+### Docker architecture and basic concepts
 	
-- Architechture:
+- Architecture:
 ![image](https://user-images.githubusercontent.com/15383075/170934097-435dd734-491c-4666-8703-42f8654e79d9.png)
 
+- Basic concepts:
+	- Docker Deamon
+		- Listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services.
+	- Docker Client
+		- Provide the primary primary way that many Docker users interact with Docker (Docker command line)
+	- Docker Registry
+		- Store and sharing docker images like Docker Hub, gci..
+	- Docker Compose
+		- A tool that was developed to help define and share multi-container applications. 
 
 ### Why is using Docker?
 - **Keep it Simple**
@@ -47,36 +56,31 @@ Using resource from https://docs.docker.com/ and some image from Internet.
 	- Use Certified and community-provided images in your project. Push to a cloud-based application registry and collaborate with team members.
 
 
-### Basic concepts, command lines and common objects
-- Basic concepts:
-	- Docker Deamon
-		- Listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services.
-	- Docker Client
-		- Provide the primary primary way that many Docker users interact with Docker (Docker command line)
-	- Docker Registry
-		- Store and sharing docker images like Docker Hub, gci..
-	- Docker Compose
-		- A tool that was developed to help define and share multi-container applications. 
-
+### The most common command lines and objects
 - Basic commands:
 	- docker image
-	- docker rmi
 	- docker container
-	- docker rm
 	- docker build
-	- docker run 
+	- docker run
+	- docker stop
+	- docker start
+	- docker restart
+	- docker exec
 	- docker logs
 	- docker volumn
 	- docker network
-	- docker-compose
+	- docker-compose up
+	- docker-compose down
+	- docker-compose stop
+	- docker-compose start
 	- ...
 
 - Docker common objects
 	- Dockerfile
 		- A text file define instruction for building an Image
-	- Docker Image
+	- Docker Images
 		- An image is a read-only template with instructions for creating a Docker container. Often, an image is based on another image, with some additional customization.
-	- Docker Container
+	- Docker Containers
 		- A container is a runnable instance of an image.
 	- Docker Layers
 		- Images consist of layers
@@ -100,7 +104,7 @@ Using resource from https://docs.docker.com/ and some image from Internet.
 
 
 ### How to using Docker in basically?
--	### Following some demo below to see, how it's works and how to uses. Let's get started!
+-	#### Following some demo below to see how to works with Docker. Let's get started!
 	1. **Basic using concept with dockerizing simple app**
 		1. Build an Image form Dockerfile
 		2. Run a Container from Image
@@ -110,25 +114,25 @@ Using resource from https://docs.docker.com/ and some image from Internet.
 		1. Clone souce code of this project
 		2. Create network: `docker network create playwithdocker`, create volume: `docker create volume mysql-data`
 		3. Setup container Mysql
-			1. Pull offical image from docker hub: `docker pull mysql`
-			2. Run mysql: `docker run --rm -dit --name mysql-server -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=playwithdocker --network playwithdocker mysql` <br> Or run with volume `docker run --rm -dit --name mysql-server -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=playwithdocker --network playwithdocker mysql`
-			3. Access to mysql-server for create table: `docker exec -it mysql-server mysql -u root -p` -> password 12345 <br>
-			`CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255));` <br>
+			- Pull offical image from docker hub: `docker pull mysql`
+			- Run mysql: `docker run --rm -dit --name mysql-server -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=playwithdocker --network playwithdocker mysql` <br> Or run with volume `docker run --rm -dit --name mysql-server -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=12345 -e MYSQL_DATABASE=playwithdocker --network playwithdocker mysql`
+			- Access to mysql-server for create table: `docker exec -it mysql-server mysql -u root -p` -> password 12345  
+			`CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255));`  
 			`INSERT INTO customers (name, address) VALUES ('Dunzg Lukak', 'Thanh Khe, Da Nang');`
-		4. Setup simple nodejs app connect to Mysql container
-			1. Explain Dockerfile: https://github.com/vietnama10/playwithdocker/blob/master/Dockerfile
-			2. Build own image from Dockerfile: `docker build -t node-app:v1.0 .` 
-			3. Run own app: `docker run --rm  -dit -p 8080:3000 --name customer-service --network playwithdocker node-app:v1.0` <br> Or run with bind mount `docker run --rm  -dit -p 8080:3000 --name customer-service -v "$(pwd)":/app -v /app/node_modules --network playwithdocker node-app:v1.0`
-			4. Application at: : List -> http://localhost:8080/customers || Create -> http://localhost:8080/customers/create
-		5. Setup docker compose to start apps in one step (package step 2~4 into one config)
-			1. Checkout to branch `feature-nodemon_docker_compose`
-			1. Explain file: https://github.com/vietnama10/playwithdocker/blob/feature-nodemon_docker_compose/docker-compose.yml
-			2. Run `docker-compose up -d` to start up project
-			3. Application at: : List -> http://localhost:8080/customers  || Create -> http://localhost:8080/customers/create
-			4. Others command `docker-compose ps -a` , `docker-compose down --rmi local`
-	
+		4. Setup simple NodeJs app connect to MySQL container
+			- Explain Dockerfile: https://github.com/vietnama10/playwithdocker/blob/master/Dockerfile
+			- Build own image from Dockerfile: `docker build -t node-app:v1.0 .` 
+			- Run own app: `docker run --rm  -dit -p 8080:3000 --name customer-service --network playwithdocker node-app:v1.0` <br> Or run with bind mount `docker run --rm  -dit -p 8080:3000 --name customer-service -v "$(pwd)":/app -v /app/node_modules --network playwithdocker node-app:v1.0`
+			- Application at: : List -> http://localhost:8080/customers || Create -> http://localhost:8080/customers/create
+		5. Setup docker compose to start app in one step (package step 2~4 into one config)
+			- Checkout to branch `feature-nodemon_docker_compose`
+			- Explain Dockerfile update: https://github.com/vietnama10/playwithdocker/blob/feature-nodemon_docker_compose/Dockerfile
+			- Explain file: https://github.com/vietnama10/playwithdocker/blob/feature-nodemon_docker_compose/docker-compose.yml
+			- Run `docker-compose up -d` to start up project
+			- Application at: : List -> http://localhost:8080/customers  || Create -> http://localhost:8080/customers/create
+			- Others command `docker-compose ps -a` , `docker-compose down --rmi local`
 	
 
-### What next?
+### What futher?
 - CI/CD Pipeline with Jenkins or Github Actions.
-- Or Kubernates
+- Or Kubernetes
