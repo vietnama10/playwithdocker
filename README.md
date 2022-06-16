@@ -9,8 +9,8 @@ Using resource from https://docs.docker.com/ and some image from Internet.
 3.  [Why is using Docker?](#why-is-using-docker)
 4.  [The most common command lines and objects](#the-most-common-command-lines-and-objects)
 5.  [How to using Docker in basically?](#how-to-using-docker-in-basically)
-	1. Basic using concept with dockerizing simple app
-	2. Development with multiple services use Docker Volumes/Docker Network/Docker Compose
+	1. [Basic using concept with dockerizing simple app](#basic-using-concept-with-dockerizing-simple-app)
+	2. [Development with multiple services use Docker Volumes/Docker Network/Docker Compose](#development-with-multiple-services-use-docker-volumesdocker-networkdocker-compose)
 7.  [What futher?](#what-futher)
 
 ### What is Docker?
@@ -104,13 +104,13 @@ Using resource from https://docs.docker.com/ and some image from Internet.
 
 
 ### How to using Docker in basically?
--	#### Following some demo below to see how to works with Docker. Let's get started!
-	1. **Basic using concept with dockerizing simple app**
+- **Following some demo below to see how to works with Docker. Let's get started!**
+	1. #### Basic using concept with dockerizing simple app
 		1. Build an Image form Dockerfile
 		2. Run a Container from Image
 		3. Share app to server using Docker Hub
 		<br>(follow this repo https://github.com/vietnama10/SimpleDockerDemo)
-	2. **Development with multiple services use Docker Volumes/Docker Network/Docker Compose**
+	2. #### Development with multiple services use Docker Volumes/Docker Network/Docker Compose
 		1. Clone souce code of this project
 		2. Create network: `docker network create playwithdocker`, create volume: `docker create volume mysql-data`
 		3. Setup container Mysql
