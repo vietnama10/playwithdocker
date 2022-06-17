@@ -5,7 +5,7 @@ Using resource from https://docs.docker.com/ and some images from Internet.
 ### Table of contents
 
 1.  [What is Docker?](#what-is-docker)
-2.  [Docker architecture and basic concepts](#docker-architecture-and-basic-concepts)
+2.  [Docker architecture](#docker-architecture)
 3.  [Why is using Docker?](#why-is-using-docker)
 4.  [The most common command lines and objects](#the-most-common-command-lines-and-objects)
 5.  [How to using Docker in basically?](#how-to-using-docker-in-basically)
@@ -132,4 +132,4 @@ Using resource from https://docs.docker.com/ and some images from Internet.
 
 ### What futher?
 - CI/CD Pipeline with Jenkins or Github Actions.
-- Deploy applications with Docker and Kubernetes
+- Deploy Docker container applications with Kubernetes
