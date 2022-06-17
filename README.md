@@ -1,6 +1,6 @@
 # Play with Docker
 A project to research about Docker.  
-Using resource from https://docs.docker.com/ and some image from Internet.
+Using resource from https://docs.docker.com/ and some images from Internet.
 
 ### Table of contents
 
@@ -21,20 +21,15 @@ Using resource from https://docs.docker.com/ and some image from Internet.
 - With Docker, you can manage your infrastructure in the same ways you manage your applications.
 - Tech: Docker is written in the Go programming language and takes advantage of several features of the Linux kernel (resource isolation) to deliver its functionality.
 
-### Docker architecture and basic concepts
-	
-- Architecture:
-![image](https://user-images.githubusercontent.com/15383075/170934097-435dd734-491c-4666-8703-42f8654e79d9.png)
+### Docker architecture
+![image](https://user-images.githubusercontent.com/15383075/170934097-435dd734-491c-4666-8703-42f8654e79d9.png)  
 
-- Basic concepts:
-	- Docker Deamon
-		- Listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services.
-	- Docker Client
-		- Provide the primary primary way that many Docker users interact with Docker (Docker command line)
-	- Docker Registry
-		- Store and sharing docker images like Docker Hub, gci..
-	- Docker Compose
-		- A tool that was developed to help define and share multi-container applications. 
+- Docker Deamon
+	- Listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services.
+- Docker Client
+	- Provide the primary primary way that many Docker users interact with Docker (Docker command line)
+- Docker Registry
+	- Store and sharing docker images like Docker Hub, gci..
 
 ### Why is using Docker?
 - **Keep it Simple**
@@ -101,7 +96,9 @@ Using resource from https://docs.docker.com/ and some image from Internet.
 		- Docker has two options for containers to store files on the host machine (connect specific filesystem paths of the container back to the host machine). so that the files are persisted even after the container stops: *volumes*, and *bind mounts*.
 		- Docker provide the *-v or --volume or --mount* flag to setting volumns or bind mounts <br><br>
 		![image](https://user-images.githubusercontent.com/15383075/172640756-a9dd4401-dfb4-468a-a8c8-a05a36bfdd07.png)
-
+		
+	- Docker Compose
+		- A tool that was developed to help define and share multi-container applications. 
 
 ### How to using Docker in basically?
 - **Following some demo below to see how to works with Docker. Let's get started!**
@@ -135,4 +132,4 @@ Using resource from https://docs.docker.com/ and some image from Internet.
 
 ### What futher?
 - CI/CD Pipeline with Jenkins or Github Actions.
-- Or Kubernetes
+- Deploy applications with Docker and Kubernetes
