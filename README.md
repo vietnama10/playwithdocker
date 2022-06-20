@@ -2,8 +2,7 @@
 A project to research about Docker.  
 Using resource from https://docs.docker.com/ and some images from Internet.
 
-### Table of contents
-
+## Table of contents
 1.  [What is Docker?](#what-is-docker)
 2.  [Docker architecture](#docker-architecture)
 3.  [Why is using Docker?](#why-is-using-docker)
@@ -13,7 +12,7 @@ Using resource from https://docs.docker.com/ and some images from Internet.
 	2. [Development with multiple services use Docker Volumes/Docker Network/Docker Compose](#development-with-multiple-services-use-docker-volumesdocker-networkdocker-compose)
 7.  [What futher?](#what-futher)
 
-### What is Docker?
+## What is Docker?
 ![image](https://user-images.githubusercontent.com/15383075/171147109-8bff0707-be72-45ae-9c54-aaedf5578f2a.png)
 
 - Docker is an open platform for developing, shipping, and running applications (local -> dev, production).
@@ -21,7 +20,7 @@ Using resource from https://docs.docker.com/ and some images from Internet.
 - With Docker, you can manage your infrastructure in the same ways you manage your applications.
 - Tech: Docker is written in the Go programming language and takes advantage of several features of the Linux kernel (resource isolation) to deliver its functionality.
 
-### Docker architecture
+## Docker architecture
 ![image](https://user-images.githubusercontent.com/15383075/170934097-435dd734-491c-4666-8703-42f8654e79d9.png)  
 
 - Docker Deamon
@@ -31,7 +30,7 @@ Using resource from https://docs.docker.com/ and some images from Internet.
 - Docker Registry
 	- Store and sharing docker images like Docker Hub, gci..
 
-### Why is using Docker?
+## Why is using Docker?
 - **Keep it Simple**
 	- Docker’s friendly, CLI-based workflow makes building, sharing, and running containerized applications accessible to developers of all skill levels.
 	
@@ -51,7 +50,7 @@ Using resource from https://docs.docker.com/ and some images from Internet.
 	- Use Certified and community-provided images in your project. Push to a cloud-based application registry and collaborate with team members.
 
 
-### The most common command lines and objects
+## The most common command lines and objects
 - Basic commands:
 	- docker image
 	- docker container
@@ -100,7 +99,7 @@ Using resource from https://docs.docker.com/ and some images from Internet.
 	- Docker Compose
 		- A tool that was developed to help define and share multi-container applications. 
 
-### How to using Docker in basically?
+## How to using Docker in basically?
 - **Following some demo below to see how to works with Docker. Let's get started!**
 	1. #### Basic using concept with dockerizing simple app
 		1. Build an Image form Dockerfile
@@ -130,6 +129,6 @@ Using resource from https://docs.docker.com/ and some images from Internet.
 			- Others command `docker-compose ps -a` , `docker-compose down --rmi local`
 	
 
-### What futher?
+## What futher?
 - CI/CD Pipeline with Jenkins or Github Actions.
 - Deploy Docker container applications with Kubernetes
